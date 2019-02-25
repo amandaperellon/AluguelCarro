@@ -43,15 +43,11 @@ function calculaValorTotal(){
 
 		var dataInicialC = new Date(dataInicialM[1] + "/" + dataInicialM[0] + "/" + dataInicialM[2]).getTime();
 
-		console.log(dataInicialC);
-
 		var data_final =  $("#Locacao_data_final").val();
 
 		var dataFinalM = data_final.split('/');
 
 		var dataFinalC = new Date(dataFinalM[1] + "/" + dataFinalM[0] + "/" + dataFinalM[2]).getTime();
-
-		console.log(dataFinalC);
 
 		var timeDiff = Math.abs(dataFinalC) - Math.abs(dataInicialC);
 			
@@ -118,7 +114,6 @@ $(document).on("change", ":input", function(){
 					?>
 						<?php 
 						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
-							'empty'=>'Selecione',
 							'options' => $listOptions
 						)); ?>
 						<?php echo $form->error($modelcesta,'carro_id'); ?>
@@ -178,13 +173,9 @@ $(document).on("change", ":input", function(){
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');?>
 	</div>
 
-	<?php
-
-	var_dump($_POST);
-
-	?>
-
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<!-- ARRUMAR O LIST DE LOCACAO -->

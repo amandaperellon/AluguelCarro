@@ -72,8 +72,22 @@ class LocacaoController extends Controller
 		if(isset($_POST['Locacao']))
 		{
 			$model->attributes=$_POST['Locacao'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+
+			if($model->save()){
+
+				foreach($_POST["LocacaoCarro"] as $atributosAux){
+					
+					$modelcesta = new LocacaoCarro();
+					$modelcesta->attributes=$atributosAux;
+					$modelcesta->locacao_id = $model->id;
+					
+
+					if(!$modelcesta->save()){
+
+						var_dump($modelcesta->errors);
+					}
+				}
+			}
 		}
 
 		$this->render('create',array(

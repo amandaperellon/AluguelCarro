@@ -30,7 +30,7 @@ class LocacaoCarro extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, locacao_id, carro_id', 'required'),
+			array('locacao_id, carro_id', 'required'),
 			array('id, locacao_id, carro_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

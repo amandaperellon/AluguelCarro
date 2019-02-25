@@ -33,12 +33,12 @@ class Locacao extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('data_inicial, data_final, valor_total, carro_id, cliente_id', 'required'),
-			array('carro_id, cliente_id', 'numerical', 'integerOnly'=>true),
+			array('data_inicial, data_final, valor_total, cliente_id', 'required'),
+			array( 'cliente_id', 'numerical', 'integerOnly'=>true),
 			array('valor_total', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, data_inicial, data_final, valor_total, carro_id, cliente_id', 'safe', 'on'=>'search'),
+			array('id, data_inicial, data_final, valor_total, cliente_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +50,6 @@ class Locacao extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fk_carro' => array(self::BELONGS_TO, 'Carro', 'carro_id'),
 			'fk_cliente' => array(self::BELONGS_TO, 'Cliente', 'cliente_id'),
 	);}
 
@@ -64,7 +63,6 @@ class Locacao extends CActiveRecord
 			'data_inicial' => 'Data Inicial',
 			'data_final' => 'Data Final',
 			'valor_total' => 'Valor Total',
-			'carro_id' => 'Carro',
 			'cliente_id' => 'Cliente',
 		);
 	}
@@ -91,7 +89,6 @@ class Locacao extends CActiveRecord
 		$criteria->compare('data_inicial',$this->data_inicial,true);
 		$criteria->compare('data_final',$this->data_final,true);
 		$criteria->compare('valor_total',$this->valor_total,true);
-		$criteria->compare('carro_id',$this->carro_id);
 		$criteria->compare('cliente_id',$this->cliente_id);
 
 		return new CActiveDataProvider($this, array(
