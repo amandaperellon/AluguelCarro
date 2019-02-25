@@ -52,8 +52,7 @@ class Locacao extends CActiveRecord
 		return array(
 			'fk_carro' => array(self::BELONGS_TO, 'Carro', 'carro_id'),
 			'fk_cliente' => array(self::BELONGS_TO, 'Cliente', 'cliente_id'),
-		);
-	}
+	);}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

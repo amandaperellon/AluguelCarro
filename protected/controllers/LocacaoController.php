@@ -63,6 +63,8 @@ class LocacaoController extends Controller
 	public function actionCreate()
 	{
 		$model=new Locacao;
+		$modelcesta = new LocacaoCarro();
+		$carro = new Carro();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -76,6 +78,7 @@ class LocacaoController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'modelcesta'=>$modelcesta
 		));
 	}
 
