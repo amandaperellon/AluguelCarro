@@ -78,8 +78,9 @@ class LocacaoController extends Controller
 				foreach($_POST["LocacaoCarro"] as $atributosAux){
 					
 					$modelcesta = new LocacaoCarro();
-					$modelcesta->attributes=$atributosAux;
 					$modelcesta->locacao_id = $model->id;
+
+					$modelcesta->attributes=$atributosAux;
 					
 
 					if(!$modelcesta->save()){
@@ -108,15 +109,38 @@ class LocacaoController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Locacao']))
-		{
-			$model->attributes=$_POST['Locacao'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		if(isset($_POST['Locacao'])){
+
+			$model->valor_total = $_POST['Locacao']['valor_total'];
+
+			if($model->save()){
+
+				foreach($_POST["LocacaoCarro"] as $atributosAux){
+
+					if(isset($atributosAux['id']) && $atributosAux['id'] > 0){
+
+						$modelcesta = LocacaoCarro::model()->findByPk($atributosAux['id']);
+						$modelcesta->attributes=$atributosAux;
+
+					}else{
+
+						$modelcesta = new LocacaoCarro();
+						$modelcesta->locacao_id = $model->id;
+						$modelcesta->attributes=$atributosAux;
+					}
+
+					if(!$modelcesta->save()){
+
+						var_dump($modelcesta->errors);
+					}
+				}
+				
+			}
+
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model
 		));
 	}
 

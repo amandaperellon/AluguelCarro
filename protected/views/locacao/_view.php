@@ -18,10 +18,17 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('valor_total')); ?>:</b>
-	<?php echo CHtml::encode($data->valor_total); ?>
+	<?php echo CHtml::encode(LocacaoController::formatPrice($data->valor_total)); ?>
 	<br />
 
-	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Carro(s)')); ?>:</b>
+	<?php
+
+	foreach ($data->fk_locacaocarro as $locacaoCarro) {
+		echo CHtml::encode($locacaoCarro->fk_carro->fk_modelo->nome . ", ");
+	}
+	 ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('cliente_id')); ?>:</b>
 	<?php echo CHtml::encode($data->fk_cliente->nome); ?>

@@ -40,6 +40,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
+<?php
+?>
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'locacao-grid',
 	'dataProvider'=>$model->search(),
@@ -49,8 +52,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'data_inicial',
 		'data_final',
 		'valor_total',
-		'carro_id',
-		'cliente_id',
+		array(
+			'header'=>"Carro",
+			'value'=>function($model){
+				$resultado = "";
+				
+				foreach ($model->fk_locacaocarro as $locacaoCarro) {
+					$resultado = $resultado . $locacaoCarro->fk_carro->fk_modelo->nome. ", ";
+				}
+
+				return $resultado;
+			}
+		),
+		array(
+			'header'=>'Cliente',
+			'value'=>'$data->fk_cliente->nome'
+		),
 		array(
 			'class'=>'CButtonColumn',
 		),

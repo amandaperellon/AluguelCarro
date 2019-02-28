@@ -32,13 +32,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'carro_id'); ?>
-		<?php echo $form->textField($model,'carro_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'cliente_id'); ?>
-		<?php echo $form->textField($model,'cliente_id'); ?>
+		<?php echo $form->textField($model,'cliente_id')?>
 	</div>
 
 	<div class="row buttons">

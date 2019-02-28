@@ -32,7 +32,15 @@ $this->widget('zii.widgets.CDetailView', array(
 		),
 		array(
 			'label'=>'Carro',
-			'value'=>$model->fk_modelo->nome . " - " . $model->fk_modelo->fk_marca->nome
+			'value'=>function($model){
+				$resultado = "";
+				
+				foreach ($model->fk_locacaocarro as $locacaoCarro) {
+					$resultado = $resultado.$locacaoCarro->fk_carro->fk_modelo->nome.", ";
+				}
+
+				return $resultado;
+			}
 		),
 		array(
 			'label'=>'Cliente',

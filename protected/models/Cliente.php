@@ -44,7 +44,7 @@ class Cliente extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tbLocacaos' => array(self::HAS_MANY, 'TbLocacao', 'cliente_id'),
+			'locacao' => array(self::HAS_MANY, 'Locacao', 'cliente_id'),
 		);
 	}
 

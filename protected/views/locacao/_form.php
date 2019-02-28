@@ -2,6 +2,7 @@
 /* @var $this LocacaoController */
 /* @var $model Locacao  document.getElementByName('valor_total').innerHTML */
 /* @var $form CActiveForm */
+$i = -1;
 ?>
 
 <script
@@ -102,7 +103,8 @@ $(document).on("change", ":input", function(){
 		$carro = CHtml::listData($list, 'id', 'nome');
 
 		if (isset($_POST['LocacaoCarro'])) {
-			foreach ($_POST['LocacaoCarro'] as $i => $carroonpost) { ?>
+			foreach ($_POST['LocacaoCarro'] as $i => $carroonpost) {
+		 ?>
 
 				<div class="CarroClone">
 
@@ -115,13 +117,35 @@ $(document).on("change", ":input", function(){
 						<?php 
 						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
 							'options' => $listOptions
-						)); ?>
-						<?php echo $form->error($modelcesta,'carro_id'); ?>
+						)); 
+						?>
+						<?php echo $form->error($modelcesta,'carro_id');
+						?>
 				</div>
 			<?php
 			}
 
 			$modelcesta = new LocacaoCarro();
+		}else{
+
+			foreach ($model->fk_locacaocarro as $i => $modelcesta) {
+				?>
+
+				<div class="CarroClone">
+						<?php 
+						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
+							'options' => $listOptions
+						)); 
+
+						echo $form->hiddenField($modelcesta, '['.$i.']id');
+
+						?>
+						<?php echo $form->error($modelcesta,'carro_id');?>
+				</div>
+
+			<?php
+
+			}
 		}
 
 		?>
@@ -129,10 +153,13 @@ $(document).on("change", ":input", function(){
 	<div class="CarroClone">
 		
 		<?php 
-			echo $form->dropDownList($modelcesta,'[0]carro_id', $list, array(
+
+			$modelcesta = new LocacaoCarro();
+			echo $form->dropDownList($modelcesta,'['.++$i.']carro_id', $list, array(
 				'empty'=>'Selecione',
 				'options' => $listOptions
 			));
+
 			echo $form->error($modelcesta,'carro_id');
 		?>
 
@@ -177,5 +204,3 @@ $(document).on("change", ":input", function(){
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-
-<!-- ARRUMAR O LIST DE LOCACAO -->

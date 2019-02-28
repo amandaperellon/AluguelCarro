@@ -51,6 +51,7 @@ class Locacao extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'fk_cliente' => array(self::BELONGS_TO, 'Cliente', 'cliente_id'),
+			'fk_locacaocarro' => array(self::HAS_MANY, 'LocacaoCarro', 'locacao_id')
 	);}
 
 	/**
@@ -138,6 +139,20 @@ class Locacao extends CActiveRecord
 		}
 
 	    return parent::beforeSave();
+	}
+
+	public function beforeDelete(){
+
+		foreach ($this->fk_locacaocarro as $locacaoCarro) {
+			
+			if($locacaoCarro->locacao_id == $this->id){
+
+				$locacaoCarro->delete();
+			}
+
+		}
+
+		return parent::beforeDelete();
 	}
 
 }
