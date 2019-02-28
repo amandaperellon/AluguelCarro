@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Marca</h1>
+<h1>Cadastro de Marca</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

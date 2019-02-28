@@ -8,14 +8,18 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
-	array('label'=>'List Locacao', 'url'=>array('index')),
-	array('label'=>'Create Locacao', 'url'=>array('create')),
-	array('label'=>'View Locacao', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Locacao', 'url'=>array('admin')),
-);
+$url = $this->createUrl('/locacao/view', array('id'=>$model->id));
 ?>
+<div class="col-sm-2" style="float: right;">
+<div class="list-group" >
+<a href="/aluguelCarro/index.php?r=locacao/index" class="list-group-item ">Lista de Locacoes</a>
+<a href="/aluguelCarro/index.php?r=locacao/create" class="list-group-item">Criar Locacao</a>
+<a href="<?=$url?>" class="list-group-item">Detalhes da Locacao</a>
+<a href="/aluguelCarro/index.php?r=locacao/admin" class="list-group-item">Gerenciamento de Vendas</a>
+</div>
+</div>
 
-<h1>Update Locacao <?php echo $model->id; ?></h1>
+
+<h1>Edicao Locacao <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

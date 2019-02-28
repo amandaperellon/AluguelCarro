@@ -15,30 +15,41 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
+	<div style='text-align: center'>
+
 	<div class="row">
-		<?php echo $form->labelEx($model,'nome'); ?>
-		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->labelEx($model,'nome', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
+		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'nome'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'marca_id'); ?>
+		<?php echo $form->labelEx($model,'marca_id', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
 		<?php $marca = Marca::model()->findAll();
         $list = CHtml::listData($marca, 'id', 'nome');
 		echo $form->dropDownList($model,'marca_id', $list, array(
-			'empty'=>'Selecione'
+			'empty'=>'Selecione',
+			'class'=>'form-control'
 		)); ?>
 		<?php echo $form->error($model,'marca_id'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
+			'class'=>"btn btn-default"
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
+
+</div>
 
 </div><!-- form -->

@@ -34,5 +34,7 @@
 	<?php echo CHtml::encode($data->fk_cliente->nome); ?>
 	<br />
 
+	<br>
+
 
 </div>

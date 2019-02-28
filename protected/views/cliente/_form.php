@@ -15,18 +15,24 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
+
 	<div class="row">
-		<?php echo $form->labelEx($model,'nome'); ?>
-		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->labelEx($model,'nome', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
+		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'nome'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<br>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
+			'class'=>"btn btn-default"
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

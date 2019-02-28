@@ -7,10 +7,17 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Locacao', 'url'=>array('index')),
-	array('label'=>'Create Locacao', 'url'=>array('create')),
-);
+$url = $this->createUrl('/locacao/view', array('id'=>$model->id));
+?>
+
+<div class="col-sm-2" style="float: right;">
+<div class="list-group" >
+<a href="/aluguelCarro/index.php?r=locacao/index" class="list-group-item ">Lista de Locacoes</a>
+<a href="/aluguelCarro/index.php?r=locacao/create" class="list-group-item">Criar Locacao</a>
+</div>
+</div>
+
+<?php
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,7 +33,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Locacaos</h1>
+<h1>Pesquisa de Locacoes</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

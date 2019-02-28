@@ -82,12 +82,11 @@ $(document).on("change", ":input", function(){
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<button type="button" class="row button" id="adicionarCarro">Adicionar Carro</button>
+	<button class="btn btn-default" type="button" class="row button" id="adicionarCarro">Adicionar Carro</button>
 
 	<div class="row" id="Carros">
 	<?php
@@ -114,11 +113,14 @@ $(document).on("change", ":input", function(){
 
 					$modelcesta->carro_id = $carroonpost['carro_id'];
 					?>
+					<div class="col-sm-6">
 						<?php 
 						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
-							'options' => $listOptions
+							'options' => $listOptions,
+							'class'=>'form-control'
 						)); 
 						?>
+					</div>
 						<?php echo $form->error($modelcesta,'carro_id');
 						?>
 				</div>
@@ -132,10 +134,15 @@ $(document).on("change", ":input", function(){
 				?>
 
 				<div class="CarroClone">
+					<div class="col-sm-6">
 						<?php 
 						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
-							'options' => $listOptions
+							'options' => $listOptions,
+							'class'=>'form-control'
 						)); 
+					?>
+					</div>
+					<?php
 
 						echo $form->hiddenField($modelcesta, '['.$i.']id');
 
@@ -155,11 +162,19 @@ $(document).on("change", ":input", function(){
 		<?php 
 
 			$modelcesta = new LocacaoCarro();
+			?>
+			<div class="col-sm-6">
+				<br>
+			<?php
+			echo $form->labelEx($modelcesta,'carro_id'); 
 			echo $form->dropDownList($modelcesta,'['.++$i.']carro_id', $list, array(
 				'empty'=>'Selecione',
-				'options' => $listOptions
+				'options' => $listOptions,
+				'class'=>'form-control'
 			));
-
+			?>
+			</div>
+			<?php
 			echo $form->error($modelcesta,'carro_id');
 		?>
 
@@ -168,37 +183,68 @@ $(document).on("change", ":input", function(){
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'data_inicial'); ?>
-		<?php echo $form->textField($model,'data_inicial'); ?>
+		<br>
+		<?php echo $form->labelEx($model,'data_inicial', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
+		<div class="col-sm-4">
+		<?php echo $form->textField($model,'data_inicial', array(
+			'class'=>'form-control'
+		)); ?>
+		</div>
 		<?php echo $form->error($model,'data_inicial'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'data_final'); ?>
-		<?php echo $form->textField($model,'data_final'); ?>
+		<br>
+		<?php echo $form->labelEx($model,'data_final', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
+		<div class="col-sm-4">
+		<?php echo $form->textField($model,'data_final', array(
+			'class'=>'form-control'
+		)); ?>
+	</div>
 		<?php echo $form->error($model,'data_final'); ?>
 	</div>
 
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'valor_total'); ?>
-		<?php echo $form->textField($model, 'valor_total'); ?>
+		<br>
+		<?php echo $form->labelEx($model,'valor_total', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
+		<div class="col-sm-4">
+		<?php echo $form->textField($model, 'valor_total', array(
+			'class'=>'form-control'
+		)); ?>
+	</div>
 		<?php echo $form->error($model,'valor_total'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'cliente_id'); ?>
+		<br>
+		<?php echo $form->labelEx($model,'cliente_id', array(
+			'class'=>'col-sm-2 control-label'
+		)); ?>
+		<div class="col-sm-4">
 		<?php $clientes = Cliente::model()->findAll();
         $list = CHtml::listData($clientes, 'id', 'nome');
 		echo $form->dropDownList($model,'cliente_id', $list, array(
-			'empty'=>'Selecione'
+			'empty'=>'Selecione',
+			'class'=>'form-control'
 		));?>
+	</div>
 		<?php echo $form->error($model,'cliente_id'); ?>
 	</div>
-
+	<br>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
+			'class'=>"btn btn-default"
+		));?>
 	</div>
+
+	<br>
 
 
 <?php $this->endWidget(); ?>
