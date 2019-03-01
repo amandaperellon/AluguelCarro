@@ -22,20 +22,25 @@
 	<div style='text-align: center'>
 
 	<div class="row">
+		<br>
 		<?php echo $form->labelEx($model,'nome', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
+		<div class="col-sm-10">
 		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100,'class'=>'form-control')); ?>
+		</div>
 		<?php echo $form->error($model,'nome'); ?>
 	</div>
 
 	<div class="row buttons">
+		<br>
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
 			'class'=>"btn btn-default"
 		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
+
 </div>
 
 </div><!-- form -->

@@ -19,7 +19,7 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body style="margin: 0px">
+<body>
 <div class="container" id="page">
 
 	<div id="mainmenu">
@@ -33,20 +33,48 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://127.0.0.1/aluguelCarro/index.php">Aluguel</a>
+      <a class="navbar-brand" href="http://127.0.0.1/aluguelCarro/index.php">Aluguel de Carros</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locacoes <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=marca/create">Marcas</a></li>
-            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=modelo/create">Modelos</a></li>
-            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=carro/create">Carros</a></li>
-            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=cliente/create">Clientes</a></li>
-            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=locacao/create">Locacoes</a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=locacao/create">Cadastrar</a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=locacao/index">Listar </a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=locacao/admin">Gerenciamento</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carros <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=carro/create">Cadastrar</a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=carro/index">Listar </a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=carro/admin">Gerenciamento</a></li>
+          </ul>
+        </li><li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modelos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=modelo/create">Cadastrar</a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=modelo/index">Listar </a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=modelo/admin">Gerenciamento</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Marcas <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=marca/create">Cadastrar</a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=marca/index">Listar </a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=marca/admin">Gerenciamento</a></li>
+          </ul>
+        </li><li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=cliente/create">Cadastrar</a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=cliente/index">Listar </a></li>
+            <li><a href="http://127.0.0.1/aluguelCarro/index.php?r=cliente/admin">Gerenciamento</a></li>
           </ul>
         </li>
       </ul>

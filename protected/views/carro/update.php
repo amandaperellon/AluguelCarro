@@ -8,14 +8,20 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
-	array('label'=>'List Carro', 'url'=>array('index')),
-	array('label'=>'Create Carro', 'url'=>array('create')),
-	array('label'=>'View Carro', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Carro', 'url'=>array('admin')),
-);
+$url = $this->createUrl('/marca/view', array('id'=>$model->id));
 ?>
 
 <h1>Edicao Carro <?php echo $model->id; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="row">
+	<div class="col-md-8">
+		<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+	</div>
+	<div class="col-md-4">
+		<div class="list-group" >
+			<a href="/aluguelCarro/index.php?r=marca/index" class="list-group-item ">Lista</a>
+			<a href="/aluguelCarro/index.php?r=marca/create" class="list-group-item">Criar</a>
+			<a href="<?=$url?>" class="list-group-item">Detalhes da Marca</a>
+			<a href="/aluguelCarro/index.php?r=marca/admin" class="list-group-item">Gerenciamento</a>
+		</div>
+	</div>
+</div>

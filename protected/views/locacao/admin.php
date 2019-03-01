@@ -7,18 +7,6 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$url = $this->createUrl('/locacao/view', array('id'=>$model->id));
-?>
-
-<div class="col-sm-2" style="float: right;">
-<div class="list-group" >
-<a href="/aluguelCarro/index.php?r=locacao/index" class="list-group-item ">Lista de Locacoes</a>
-<a href="/aluguelCarro/index.php?r=locacao/create" class="list-group-item">Criar Locacao</a>
-</div>
-</div>
-
-<?php
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -35,11 +23,13 @@ $('.search-form form').submit(function(){
 
 <h1>Pesquisa de Locacoes</h1>
 
-<p>
+<div class="row">
+	<div class="col-md-8">
+		<p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
-
+<br>
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
@@ -49,9 +39,13 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php
 ?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'locacao-grid',
+	'itemsCssClass' =>'table table-bordered',
+	'htmlOptions'=> array(
+	'id'=>'tbl_busca',
+	'class'=>'div',
+	),
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -80,3 +74,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+</div>
+	<div class="col-md-4">
+		<?php
+			$url = $this->createUrl('/locacao/view', array('id'=>$model->id));
+		?>
+	<div class="list-group" >
+		<a href="/aluguelCarro/index.php?r=locacao/index" class="list-group-item ">Lista</a>
+		<a href="/aluguelCarro/index.php?r=locacao/create" class="list-group-item">Criar</a>
+	</div>
+</div>
+</div>

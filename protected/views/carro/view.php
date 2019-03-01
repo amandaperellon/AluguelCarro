@@ -16,10 +16,21 @@ $this->menu=array(
 );
 ?>
 
-<h1>Carro: <?php echo $model->fk_modelo->nome; ?></h1>
+<style>
 
+	table.table-hover{
+
+		width:"100%";
+	}
+
+</style>
+
+<h1>Carro: <?php echo $model->fk_modelo->nome; ?></h1>
+<table class="table-striped">
 <?php $this->widget('zii.widgets.CDetailView', array(
+	'htmlOptions'=> array('class'=>'table table-hover'),
 	'data'=>$model,
+	'htmlOptions'=> array('class'=>'table table-hover'),
 	'attributes'=>array(
 		'id',
 		'valor_diario',
@@ -30,3 +41,4 @@ $this->menu=array(
 		'descricao',
 	),
 )); ?>
+</table>

@@ -22,6 +22,7 @@ $this->menu=array(
 
 $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
+	'htmlOptions'=> array('class'=>'table table-hover'),
 	'attributes'=>array(
 		'id',
 		'data_inicial',

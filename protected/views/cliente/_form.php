@@ -3,7 +3,6 @@
 /* @var $model Cliente */
 /* @var $form CActiveForm */
 ?>
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -18,13 +17,15 @@
 	<p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-
+<div style="text-align: center;">
+<br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'nome', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
+		<div class="col-sm-10">
 		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
+		</div>
 		<?php echo $form->error($model,'nome'); ?>
 	</div>
 
@@ -35,6 +36,8 @@
 		)); ?>
 	</div>
 
-<?php $this->endWidget(); ?>
+	<br>
 
+<?php $this->endWidget(); ?>
+</div>
 </div><!-- form -->

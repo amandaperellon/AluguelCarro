@@ -18,16 +18,19 @@
 	<p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
 	<div style='text-align: center'>
 
 	<div class="row">
+		<br>
 		<?php echo $form->labelEx($model,'nome', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
+		<div class="col-sm-10">
 		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>100,'class'=>'form-control')); ?>
+	</div>
 		<?php echo $form->error($model,'nome'); ?>
 	</div>
+	<br>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'marca_id', array(
@@ -35,21 +38,27 @@
 		)); ?>
 		<?php $marca = Marca::model()->findAll();
         $list = CHtml::listData($marca, 'id', 'nome');
+        ?>
+        <div class="col-sm-10">
+        <?php
 		echo $form->dropDownList($model,'marca_id', $list, array(
 			'empty'=>'Selecione',
 			'class'=>'form-control'
 		)); ?>
+	</div>
 		<?php echo $form->error($model,'marca_id'); ?>
 	</div>
 
+	<br>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
-			'class'=>"btn btn-default"
+			'class'=>"btn btn-default",
 		)); ?>
 	</div>
+	<br>
 
 <?php $this->endWidget(); ?>
-
 </div>
 
 </div><!-- form -->

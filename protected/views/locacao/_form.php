@@ -83,12 +83,13 @@ $(document).on("change", ":input", function(){
 	'enableAjaxValidation'=>false,
 )); ?>
 <p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
-
+<p class="col-sm-2 control-label"><b>Carro* :</b></p>
+	<br>
+	<button class="btn btn-default" type="button" class="button" id="adicionarCarro">Adicionar Carro</button>
+	<br>
 	<?php echo $form->errorSummary($model); ?>
-
-	<button class="btn btn-default" type="button" class="row button" id="adicionarCarro">Adicionar Carro</button>
-
-	<div class="row" id="Carros">
+	<div id="Carros">
+		<br>
 	<?php
 
 		$carros = Carro::model()->with('fk_modelo')->findAll();
@@ -105,7 +106,7 @@ $(document).on("change", ":input", function(){
 			foreach ($_POST['LocacaoCarro'] as $i => $carroonpost) {
 		 ?>
 
-				<div class="CarroClone">
+				<div class="row CarroClone">
 
 					<?php
 
@@ -113,7 +114,7 @@ $(document).on("change", ":input", function(){
 
 					$modelcesta->carro_id = $carroonpost['carro_id'];
 					?>
-					<div class="col-sm-6">
+					<div class="col-sm-10">
 						<?php 
 						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
 							'options' => $listOptions,
@@ -133,8 +134,8 @@ $(document).on("change", ":input", function(){
 			foreach ($model->fk_locacaocarro as $i => $modelcesta) {
 				?>
 
-				<div class="CarroClone">
-					<div class="col-sm-6">
+				<div class="row CarroClone">
+					<div class="col-sm-10">
 						<?php 
 						echo $form->dropDownList($modelcesta,'['.$i.']carro_id', $list, array(
 							'options' => $listOptions,
@@ -157,16 +158,13 @@ $(document).on("change", ":input", function(){
 
 		?>
 
-	<div class="CarroClone">
-		
+	<div class="row CarroClone">		
 		<?php 
 
 			$modelcesta = new LocacaoCarro();
 			?>
-			<div class="col-sm-6">
-				<br>
+			<div class="col-sm-10">
 			<?php
-			echo $form->labelEx($modelcesta,'carro_id'); 
 			echo $form->dropDownList($modelcesta,'['.++$i.']carro_id', $list, array(
 				'empty'=>'Selecione',
 				'options' => $listOptions,
@@ -187,7 +185,7 @@ $(document).on("change", ":input", function(){
 		<?php echo $form->labelEx($model,'data_inicial', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 		<?php echo $form->textField($model,'data_inicial', array(
 			'class'=>'form-control'
 		)); ?>
@@ -200,7 +198,7 @@ $(document).on("change", ":input", function(){
 		<?php echo $form->labelEx($model,'data_final', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 		<?php echo $form->textField($model,'data_final', array(
 			'class'=>'form-control'
 		)); ?>
@@ -214,7 +212,7 @@ $(document).on("change", ":input", function(){
 		<?php echo $form->labelEx($model,'valor_total', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 		<?php echo $form->textField($model, 'valor_total', array(
 			'class'=>'form-control'
 		)); ?>
@@ -227,7 +225,7 @@ $(document).on("change", ":input", function(){
 		<?php echo $form->labelEx($model,'cliente_id', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 		<?php $clientes = Cliente::model()->findAll();
         $list = CHtml::listData($clientes, 'id', 'nome');
 		echo $form->dropDownList($model,'cliente_id', $list, array(
@@ -248,5 +246,4 @@ $(document).on("change", ":input", function(){
 
 
 <?php $this->endWidget(); ?>
-
 </div><!-- form -->

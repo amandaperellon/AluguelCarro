@@ -18,12 +18,13 @@
 	<p class="note">Campos com <span class="required">*</span> sao obrigatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	<div style="text-align: center;">
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'valor_diario', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 		<?php echo $form->textField($model,'valor_diario',array('size'=>10,'maxlength'=>10, 'class'=>'form-control')); ?>
 		</div>
 		<?php echo $form->error($model,'valor_diario'); ?>
@@ -36,7 +37,7 @@
 		)); ?>
 		<?php $modelos = Modelo::model()->findAll();
         $list = CHtml::listData($modelos, 'id', 'nome');?>
-        <div class="col-sm-4">
+        <div class="col-sm-8">
         <?php echo $form->dropDownList($model,'modelo_id', $list, array(
 			'empty'=>'Selecione',
 			'class'=>'form-control'
@@ -49,7 +50,7 @@
 		<?php echo $form->labelEx($model,'descricao', array(
 			'class'=>'col-sm-2 control-label'
 		)); ?>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 		<?php echo $form->textField($model,'descricao',array('size'=>60,'maxlength'=>255,'class'=>'form-control')); ?>
 		</div>
 		<?php echo $form->error($model,'descricao'); ?>
@@ -63,6 +64,6 @@
 	</div>
 
 <?php $this->endWidget(); ?>
-
+</div>
 
 </div><!-- form -->

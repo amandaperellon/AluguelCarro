@@ -6,13 +6,18 @@ $this->breadcrumbs=array(
 	'Modelos'=>array('index'),
 	'Create',
 );
-
-$this->menu=array(
-	array('label'=>'List Modelo', 'url'=>array('index')),
-	array('label'=>'Manage Modelo', 'url'=>array('admin')),
-);
+$url = $this->createUrl('/modelo/view', array('id'=>$model->id));
 ?>
 
 <h1>Cadastro de Modelo</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="row">
+	<div class="col-md-8">
+		<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+	</div>
+	<div class="col-md-4">
+		<div class="list-group" >
+			<a href="/aluguelCarro/index.php?r=modelo/index" class="list-group-item ">Lista</a>
+			<a href="/aluguelCarro/index.php?r=modelo/admin" class="list-group-item">Gerenciamento</a>
+		</div>
+	</div>
+</div>
